@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::All();
-        return view ('student_forms.index')->with('student_forms', $students);
+        return view ('students.index')->with('students', $students);
     }
 
     /**
@@ -25,7 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student_forms.create');
+        return view ('students.create');
     }
 
     /**
@@ -36,7 +36,9 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Student::create($input);
+        return redirect('student')->with('flash', 'successfully Added!');
     }
 
     /**
