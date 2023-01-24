@@ -31,14 +31,17 @@
                                         <td>{{ $item->age }}</td>
                                         <td>{{ $item->address }}</td>
                                         <td>
-                                            <a href="" title="View Student"><button class="btn btn-info btn-sm"><i
+                                            <a href="{{ url('/student/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i
                                                         class="fa fa-eye" aria-hidden="true"></i>View</button></a>
                                             <a href="" title="Edit Student"><button class="btn btn-primary btn-sm"><i
                                                         class="fa fa-pencil" aria-hidden="true"></i>Edit</button></a>
-                                            <a href="" title="Delete Student"><button
-                                                    class="btn btn-danger btn-sm"><i class="fa fa-trash"
-                                                        aria-hidden="true"></i>Delete</button></a>
 
+
+                                            <form method="POST" action="" accept-charset="UTF-8" style="display:inline">
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"
+                                                ><i class="fa fa-trash"
+                                                        aria-hidden="true"></i>Delete</button>
+                                            </form>
 
                                         </td>
 
