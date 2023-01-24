@@ -13,8 +13,8 @@
                             New</a>
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="table text-center">
+                    <div class="table-responsive table-striped">
+                        <table class="table text-center table-striped">
                             <thead>
                                 <th>#</th>
                                 <th>Name</th>
@@ -31,15 +31,21 @@
                                         <td>{{ $item->age }}</td>
                                         <td>{{ $item->address }}</td>
                                         <td>
-                                            <a href="{{ url('/student/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i
-                                                        class="fa fa-eye" aria-hidden="true"></i>View</button></a>
-                                            <a href="" title="Edit Student"><button class="btn btn-primary btn-sm"><i
+                                            <a href="{{ url('/student/' . $item->id) }}" title="View Student"><button
+                                                    class="btn btn-info btn-sm"><i class="fa fa-eye"
+                                                        aria-hidden="true"></i>View</button></a>
+                                            <a href="{{ url('/student/' . $item->id . '/edit') }}"
+                                                title="Edit Student"><button class="btn btn-primary btn-sm"><i
                                                         class="fa fa-pencil" aria-hidden="true"></i>Edit</button></a>
 
 
-                                            <form method="POST" action="" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/student' . '/' . $item->id) }}"
+                                                accept-charset="UTF-8" style="display:inline">
+
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"
-                                                ><i class="fa fa-trash"
+                                                    onclick="return confirm('Are you sure?')"><i class="fa fa-trash"
                                                         aria-hidden="true"></i>Delete</button>
                                             </form>
 

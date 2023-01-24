@@ -38,7 +38,7 @@ class StudentController extends Controller
     {
         $input = $request->all();
         Student::create($input);
-        return redirect('student')->with('flash', 'successfully Added!');
+        return redirect('student')->with('flash_message', 'successfully Added!');
     }
 
     /**
@@ -61,7 +61,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.edit')->with('student', $student);
     }
 
     /**
@@ -73,7 +74,11 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $input = $request->all();
+        $student->update($input);
+        return redirect('student')->with('flash_message', 'successfully updated!');
+  
     }
 
     /**
@@ -84,6 +89,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::destroy($id);
+        return redirect('student')->with('flash_message', 'Delete successfully!');
+  
     }
 }
